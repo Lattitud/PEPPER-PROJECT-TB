@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ChoregrapheProject xmlns="http://www.aldebaran-robotics.com/schema/choregraphe/project.xsd" xar_version="3">
+    <Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0">
+        <bitmap>media/images/box/root.png</bitmap>
+        <script language="4">
+            <content>
+                <![CDATA[]]>
+</content>
+        </script>
+        <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+        <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+        <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+        <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+        <Timeline enable="0">
+            <BehaviorLayer name="behavior_layer1">
+                <BehaviorKeyframe name="keyframe1" index="1">
+                    <Diagram>
+                        <Box name="Animatedspeech2" id="3" localization="8" tooltip="" x="796" y="219">
+                            <bitmap>media/images/box/box-python-script.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[IP = "10.192.79.240"  # Replace here with your NaoQi's IP address
+PORT = 9559
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+        self.welcome = ALProxy('ALAnimatedSpeech')
+        self.faceProxy = ALProxy("ALFaceDetection", IP, PORT)
+
+
+    def onLoad(self):
+        #put initialization code here
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_onStart(self):
+
+        # Create a proxy to ALMemory to get the result of the detection store in the AlMemory variable FaceDetected
+        memProxy = ALProxy("ALMemory", IP, PORT)
+        # Get data from face detection and check if any face has been detected
+        # Subscribe to the ALFaceDetection extractor.ALFaceDetection is now running
+        period = 500
+        self.faceProxy.subscribe("Test_Face", period, 0.0)
+        memvalue = "FaceDetected"
+        for i in range(0, 5):
+                    time.sleep(0.5)
+                    val = memProxy.getData(memvalue)
+                    # Check whether we got a valid output: a list with two fields.
+                    if(val and isinstance(val, list) and len(val) >= 2):
+
+                      self.welcome.say("^wait(animations/Stand/Gestures/Hey_1)Bonjour! Je m'appelle  Pepper")
+                      self.welcome.say("Bien venu aux portes ouvertes de la H E I G V D")
+                      self.welcome.say("Comment puis-je vous aider?")
+                    else:
+                      self.welcome.say("No face detected")
+        self.faceProxy.unsubscribe("Test_Face")
+    def onInput_onStop(self):
+        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
+        self.onStopped() #activate the output of the box]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+                            <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                            <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+                        </Box>
+                        <Box name="Dialogue" id="1" localization="8" tooltip="" x="1602" y="310">
+                            <bitmap>media/images/box/box-python-script.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[IP = "10.192.79.240"  # Replace here with your NaoQi's IP address
+PORT = 9559
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+        self.welcome = ALProxy('ALAnimatedSpeech')
+        self.faceProxy = ALProxy("ALFaceDetection", IP, PORT)
+
+
+    def onLoad(self):
+        #put initialization code here
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_onStart(self):
+       #create a dialog data file
+        dialog = """
+        topic: ~Help () \n
+        language: enu \n
+        u:()"^wait(animations/Stand/Gestures/Hey_1)Bonjour! Je m'appelle Pepper" \n
+        u:()"Bien venu aux portes ouvertes de la H E I G V D"
+        u:()"Comment puis-je vous aider?"
+"""
+
+        file = open("C:\Users\Henri\Desktop\HEIG-SEM5\TB\PEPPER-PROJECT-TB\Nouvelles-Librairies","w")
+        file.write(dialog)
+        file.close()
+
+        # Create a proxy to ALMemory to get the result of the detection store in the AlMemory variable FaceDetected
+        memProxy = ALProxy("ALMemory", IP, PORT)
+        # Get data from face detection and check if any face has been detected
+        # Subscribe to the ALFaceDetection extractor.ALFaceDetection is now running
+        period = 500
+        self.faceProxy.subscribe("Test_Face", period, 0.0)
+        memvalue = "FaceDetected"
+        for i in range(0, 5):
+                    time.sleep(0.5)
+                    val = memProxy.getData(memvalue)
+                    # Check whether we got a valid output: a list with two fields.
+                    if(val and isinstance(val, list) and len(val) >= 2):
+
+                      self.welcome.say("^wait(animations/Stand/Gestures/Hey_1)Bonjour! Je m'appelle Pepper")
+                      self.welcome.say("Bien venu aux portes ouvertes de la H E I G V D")
+                      self.welcome.say("Comment puis-je vous aider?")
+                    else:
+                      self.welcome.say("No face detected")
+        self.faceProxy.unsubscribe("Test_Face")
+    def onInput_onStop(self):
+        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
+        self.onStopped() #activate the output of the box]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+                            <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                            <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+                        </Box>
+                        <Link inputowner="3" indexofinput="2" outputowner="0" indexofoutput="2" />
+                        <Link inputowner="0" indexofinput="4" outputowner="3" indexofoutput="4" />
+                    </Diagram>
+                </BehaviorKeyframe>
+            </BehaviorLayer>
+        </Timeline>
+    </Box>
+</ChoregrapheProject>

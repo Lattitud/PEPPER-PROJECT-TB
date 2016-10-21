@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package uuid="portes-ouvertes-7d580a">
+<package uuid="dialogue-99e762">
  <names>
-  <name lang="en_US">Portes-ouvertes</name>
+  <name lang="en_US">Dialogue</name>
  </names>
  <supportedLanguages>
   <language>en_US</language>
@@ -10,7 +10,7 @@
   <language>en_US</language>
  </descriptionLanguages>
  <contents>
-  <behaviorContent path=".">
+  <behaviorContent path="behavior_1">
    <nature>interactive</nature>
    <permissions/>
   </behaviorContent>
