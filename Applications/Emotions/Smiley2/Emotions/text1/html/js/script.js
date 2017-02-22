@@ -30,7 +30,7 @@ function changeTitle() {
 function gameStart() {
   session.service('ALMemory').then(function (memory) {
 	session.service('ALTextToSpeech').then(function (tts) {
-    tts.say("ok! we can start the game");
+    tts.say("Thank you!we can start the game");
   }, function (error) {
     console.log(error);
   })
@@ -39,7 +39,6 @@ function gameStart() {
   }, function (error) {
     console.log(error);
   })
-
-  
+  throw new Error('This is not an error. This is just to abort javascript');
 }
 

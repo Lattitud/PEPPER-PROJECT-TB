@@ -30,7 +30,7 @@ function changeTitle() {
 function gameStart() {
   session.service('ALMemory').then(function (memory) {
 	session.service('ALTextToSpeech').then(function (tts) {
-    tts.say("ok! we can start the game");
+    tts.say("ok!");
   }, function (error) {
     console.log(error);
   })

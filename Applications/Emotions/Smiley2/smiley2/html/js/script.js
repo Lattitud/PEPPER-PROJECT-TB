@@ -1,15 +1,15 @@
+
 // keeping a pointer to the session is very useful!
 var session;
-
+var name;
 try {
   QiSession( function (s) {
     console.log('connected!');
     session = s;
     // now that we are connected, we can use the buttons on the page
-    $('button').prop('disabled', false);
     s.service('ALMemory').then(function (memory) {
       memory.subscriber('TouchChanged').then(function (subscriber) {
-        subscriber.signal.connect(changeTitle);
+        subscriber.signal.connect(registration);
       });
     });
   });
@@ -19,27 +19,21 @@ try {
 }
 
 $(function () {
-  $('#start').click(gameStart);
+  $('#ok').click(storage);
   
 });
 
-function changeTitle() {
-  $('button').text('Game start!')
+function storage() {
+   session.service('ALMemory').then(function (memory) {
+    memory.insertData("GamerName",name);
+  }, function (error) {
+    console.log(error);
+  })
+
 }
 
-function gameStart() {
-  session.service('ALMemory').then(function (memory) {
-	session.service('ALTextToSpeech').then(function (tts) {
-    tts.say("ok! we can start the game");
-  }, function (error) {
-    console.log(error);
-  })
 
-    memory.insertData('Start_Smiley',1);
-  }, function (error) {
-    console.log(error);
-  })
-
-  
+function registration() {
+    name = prompt("Please enter your name", "YourName");
 }
 

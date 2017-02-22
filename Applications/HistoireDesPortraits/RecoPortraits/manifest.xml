@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package uuid="text-2-3c49d6" version="0.0.0">
+<package uuid="recoportraits-00a8de" version="0.0.0">
  <names>
-  <name lang="en_US">text-2</name>
+  <name lang="en_US">RecoPortraits</name>
  </names>
  <supportedLanguages>
   <language>en_US</language>
@@ -13,6 +13,9 @@
   <behaviorContent path="behavior_1">
    <userRequestable/>
    <nature>interactive</nature>
+   <triggerSentences/>
+   <loadingResponses/>
+   <autonomous/>
    <permissions/>
   </behaviorContent>
  </contents>

@@ -1,0 +1,10 @@
+topic: ~Replay()
+language: enu
+
+
+u:(e:onStart) will you like to play one more time?
+u:(yes)ok!good! $onReply=1
+u:(no)ok!buy buy! do any one else want to play?
+u:(no)$onGameOver=1
+u:(yes)ok!good! $onReply=1
+

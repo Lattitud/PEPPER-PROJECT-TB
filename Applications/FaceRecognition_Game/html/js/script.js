@@ -28,14 +28,14 @@ function changeTitle() {
 }
 
 function gameStart() {
-  session.service('ALMemory').then(function (memory) {
-	session.service('ALTextToSpeech').then(function (tts) {
-    tts.say("ok! we can start the game");
+  session.service('ALTextToSpeech').then(function (tts) {
+    tts.say("ok!");
   }, function (error) {
     console.log(error);
   })
 
-    memory.insertData('Start_Smiley',1);
+  session.service('ALMemory').then(function (memory) {
+    memory.insertData('GameStart',1);
   }, function (error) {
     console.log(error);
   })

@@ -1,0 +1,14 @@
+topic: ~Replay()
+language: enu
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+u:(e.onStart) will you like to play one more time?
+u:(yes)ok!good! $onReply=1
+u:(no)ok!buy buy!$onGameOver=1 
+
