@@ -6,6 +6,9 @@
     </BehaviorDescriptions>
     <Dialogs>
         <Dialog name="Replay" src="behavior_1/Replay/Replay.dlg" />
+        <Dialog name="NewPlayer" src="NewPlayer/NewPlayer.dlg" />
+        <Dialog name="continue" src="behavior_1/continue/continue.dlg" />
+        <Dialog name="presentation" src="behavior_1/presentation/presentation.dlg" />
     </Dialogs>
     <Resources>
         <File name="style" src="html/css/style.css" />
@@ -24,6 +27,9 @@
     </Resources>
     <Topics>
         <Topic name="Replay_enu" src="behavior_1/Replay/Replay_enu.top" topicName="Replay" language="en_US" />
+        <Topic name="NewPlayer_enu" src="NewPlayer/NewPlayer_enu.top" topicName="NewPlayer" language="en_US" />
+        <Topic name="continue_enu" src="behavior_1/continue/continue_enu.top" topicName="continue" language="en_US" />
+        <Topic name="presentation_enu" src="behavior_1/presentation/presentation_enu.top" topicName="presentation" language="en_US" />
     </Topics>
     <IgnoredPaths>
         <Path src=".metadata" />

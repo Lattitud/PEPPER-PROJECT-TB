@@ -1,0 +1,9 @@
+topic: ~NewPlayer()
+language: enu
+
+u:(e:onStart) Do any one else want to play?
+u:(yes)ok!good!Let us play $onReply=1
+u:(no)ok!buy buy! do any one else want to play?
+u:(no)$onGameOver=1
+u:(yes)ok!good! $onReply=1
+

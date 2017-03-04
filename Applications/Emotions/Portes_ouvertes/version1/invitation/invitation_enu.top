@@ -1,0 +1,14 @@
+topic: ~invitation()
+language: enu
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+u:(e:onStart) would you like to play a game with me?
+u:(yes)Thank you! This game name is smiley. I would try to get your emotions and then, show them on my tablet screen. Please follow the instructions $onPlay=1
+u:(no)OK!buy buy! enjoy your day $onStopped=1

@@ -1,0 +1,14 @@
+topic: ~continue()
+language: enu
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+u:(e:onStart) would you like to see some one else?
+u:(yes)Ok! let me see it.$onContinue=1
+u:(no)Ok! Thank you for your participation.$onStopped=1
