@@ -1,0 +1,19 @@
+topic: ~Replay()
+language: frf
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+
+
+u:(e:onStart) aimeriez-vous jouer une seconde fois?
+u:(oui)ok!cool! $onReply=""
+u:(non)Merci pour votre participation!quelqu'un d'autre aimerez t-il jouer?
+u:(oui oui)ok!cool! $onReply=""
+u:(non non)ok!buy buy!$onGameOver="behavior_1"
+

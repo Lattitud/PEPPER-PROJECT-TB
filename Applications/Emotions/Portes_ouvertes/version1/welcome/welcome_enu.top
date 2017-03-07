@@ -1,4 +1,4 @@
-topic: ~presentation()
+topic: ~welcome()
 language: enu
 
 # Defining extra concepts out of words or group of words
@@ -9,6 +9,3 @@ language: enu
 
 # Replying to speech
 #u:(~hello) ~hello
-u:(e:onStart) hello $onStart . the theme of this day is numeric revolution . did you knew that?
-u:({no}{yes})Ok!show a picture and i will tell you who is it $onStopped=1
-

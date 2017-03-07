@@ -1,5 +1,5 @@
 topic: ~continue()
-language: enu
+language: frf
 
 # Defining extra concepts out of words or group of words
 #concept:(hello) [hello hi hey "good morning" greetings]
@@ -9,6 +9,6 @@ language: enu
 
 # Replying to speech
 #u:(~hello) ~hello
-u:(e:onStart) would you like to see some one else?
-u:(yes)Ok! let me see it.$onContinue=1
-u:(no)Ok! Thank you for your participation.$onStopped=1
+u:(e:onStart) voulez-vous apprendre d'un autre personnage important de cette révolution?
+u:(oui)D'accord! montrez une autre image $onContinue= 1
+u:(non)D'accord!Merci pour votre attention $onStopped=1

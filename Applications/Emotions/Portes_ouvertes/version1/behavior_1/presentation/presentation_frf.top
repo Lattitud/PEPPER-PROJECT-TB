@@ -1,0 +1,13 @@
+topic: ~presentation()
+language: frf
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+u:(e:onStart) Bonjour $onStart . Le theme de ces portes ouvertes est la révolution numérique . le saviez-vous?
+u:({oui}{non})choisissez une image là et je vous dirai de qui il s'agit et quel rôle il ou elle a joué dans cette révolution $onStopped=1
