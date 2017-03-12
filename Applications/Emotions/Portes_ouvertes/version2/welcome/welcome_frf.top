@@ -13,4 +13,4 @@ language: frf
 u:(e:onStart)Bonjour! voulez-vous échanger avec moi?
 u:(oui)Bien! Merci! $onPlay=1
 u:(non)d'accord! bonne visite!$onStopped=1
-u:(e:onStop)$onStopped=1
+

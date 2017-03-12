@@ -10,11 +10,11 @@ language: frf
 # Replying to speech
 #u:(~hello) ~hello
 
+u:(e:onStart) aimeriez-vous jouer une seconde fois? dites ok pour un second tour
+u:(ok)ok!cool! $onDialog = 1
+u:(non) Je vous remercie de votre participation! quelqu'un d'autre aimerez t-il jouer? 
+u:(oui)ok! cool! $onPlay = 1
+u:(non personne)$onGameOver = 1
 
-u:(e:onStart) aimeriez-vous jouer une seconde fois?
-u:(oui,ok)ok!cool! $onReply=""
-u:(non)Merci pour votre participation!quelqu'un d'autre aimerez t-il jouer?
-u:(oui oui,oui moi)ok!cool! $onReply=""
-u:(non non)ok!buy buy!$onGameOver=1
 
 

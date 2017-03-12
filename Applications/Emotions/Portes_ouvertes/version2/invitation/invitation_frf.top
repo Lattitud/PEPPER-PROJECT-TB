@@ -9,5 +9,4 @@ language: frf
 
 # Replying to speech
 #u:(~hello) ~hello
-u:(e:onStart) J'ai un jeu à vous proposer. C'est un jeu que j'appelle simley Game. Il s'agit de percevoir vos émotions. vous ferez une expression faciale et moi j'essayerai de lire l'émotion sur votre visage. vous pourrez voir le résultat sur ma tablette.
-u:(ok)suivez mes instructions.$onPlay = 1
+u:(e:onStart) J'ai un jeu à vous proposer. C'est un jeu que j'appelle smaille-li Game. Il s'agit de percevoir vos émotions.  Vous ferez une expression faciale et moi j'essayerai de lire l'émotion sur votre visage. Vous pourrez voir le résultat sur ma tablette. $onPlay = 1

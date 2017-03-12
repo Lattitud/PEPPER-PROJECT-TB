@@ -9,5 +9,6 @@ language: frf
 
 # Replying to speech
 #u:(~hello) ~hello
-u:(e:onStart) Bonjour $onStart . Le theme de ces portes ouvertes est la révolution numérique . le saviez-vous?
-u:({oui}{non})choisissez une image là et je vous dirai de qui il s'agit et quel rôle il ou elle a joué dans cette révolution $onStopped=1
+u:(e:onStart) Bonjour $onStart . Le thème de ces portes ouvertes est la révolution numérique . le saviez-vous?
+u:(oui) choisissez une image là et je vous dirai de qui il s'agit et quel rôle il ou elle a joué dans cette révolution. $onPlay=1
+u:(non) choisissez une image là et je vous dirai de qui il s'agit et quel rôle il ou elle a joué dans cette révolution. $onPlay=1

@@ -10,5 +10,5 @@ language: frf
 # Replying to speech
 #u:(~hello) ~hello
 u:(e:onStart) voulez-vous apprendre d'un autre personnage important de cette révolution?
-u:(oui)D'accord! montrez une autre image $onContinue= 1
-u:(non)D'accord!Merci pour votre attention $onStopped=1
+u:(oui)D'accord! montrez moi une autre image $onDialog= 1
+u:(non)D'accord! Je vous remercie pour votre attention $onStopped= 1
