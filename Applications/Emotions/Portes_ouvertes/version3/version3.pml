@@ -10,6 +10,9 @@
         <Dialog name="invitation" src="invitation/invitation.dlg" />
         <Dialog name="Replay" src="porte_ouvertes/behavior_1/Replay/Replay.dlg" />
         <Dialog name="welcome" src="welcome/welcome.dlg" />
+        <Dialog name="presentSuisse" src="presentSuisse/presentSuisse.dlg" />
+        <Dialog name="invitation" src="porte_ouvertes/invitation/invitation.dlg" />
+        <Dialog name="Replay" src="porte_ouvertes/porte_ouvertes/behavior_1/Replay/Replay.dlg" />
     </Dialogs>
     <Resources>
         <File name="swiftswords_ext" src="porte_ouvertes/swiftswords_ext.mp3" />
@@ -34,6 +37,9 @@
         <Topic name="welcome_frf" src="welcome/welcome_frf.top" topicName="welcome" language="fr_FR" />
         <Topic name="invitation_frf" src="invitation/invitation_frf.top" topicName="invitation" language="fr_FR" />
         <Topic name="Replay_frf" src="porte_ouvertes/behavior_1/Replay/Replay_frf.top" topicName="Replay" language="fr_FR" />
+        <Topic name="presentSuisse_frf" src="presentSuisse/presentSuisse_frf.top" topicName="presentSuisse" language="fr_FR" />
+        <Topic name="invitation_frf" src="porte_ouvertes/invitation/invitation_frf.top" topicName="invitation" language="fr_FR" />
+        <Topic name="Replay_frf" src="porte_ouvertes/porte_ouvertes/behavior_1/Replay/Replay_frf.top" topicName="Replay" language="fr_FR" />
     </Topics>
     <IgnoredPaths>
         <Path src=".metadata" />

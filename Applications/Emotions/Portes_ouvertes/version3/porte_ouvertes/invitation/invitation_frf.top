@@ -1,0 +1,14 @@
+topic: ~invitation()
+language: frf
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+u:(e:onStart) J'ai un jeu à vous proposer. C'est un jeu que j'appelle smaille-li Game. Il s'agit de percevoir vos émotions.  Vous ferez une expression faciale et moi j'essayerai de lire l'émotion sur votre visage. Vous pourrez voir le résultat sur ma tablette. Voulez-vous jouer?
+ u:(oui) $onPlay = 1
+ u:(non) Dommage! Je vous souhaite une bonne visite. A bientôt. $onStopped = 1

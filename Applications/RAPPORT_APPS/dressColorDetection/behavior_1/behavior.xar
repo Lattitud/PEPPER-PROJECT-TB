@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ChoregrapheProject xmlns="http://www.aldebaran-robotics.com/schema/choregraphe/project.xsd" xar_version="3">
+    <Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0">
+        <bitmap>media/images/box/root.png</bitmap>
+        <script language="4">
+            <content>
+                <![CDATA[]]>
+</content>
+        </script>
+        <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+        <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+        <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+        <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+        <Timeline enable="0">
+            <BehaviorLayer name="behavior_layer1">
+                <BehaviorKeyframe name="keyframe1" index="1">
+                    <Diagram>
+                        <Box name="dressColorDetection" id="2" localization="8" tooltip="" x="151" y="91">
+                            <bitmap>../../../../../Users/Henri/Pictures/Pepper/color.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[# import the necessary packages
+import numpy as np
+import cv2
+
+
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+        self.tts = ALProxy("ALTextToSpeech")
+        self.memory = ALProxy("ALMemory")
+
+
+    def onLoad(self):
+        #put initialization code here
+        self.async = None
+        self.onTimeout = False
+        self.memory.subscribeToEvent("ALBasicAwareness/HumanTracked",
+                                self.getName(),
+                                "onHumanTracked")
+
+    def onUnload(self):
+        #put clean-up code here
+        self.cancelTimeout()
+        self.memory.unsubscribeToEvent("ALBasicAwareness/HumanTracked",self.getName())
+        self.onInput_onStop();
+
+    def onTimeout(self):
+        self.tts.say("Le temps imparti est écoulé. Fin de l'analyse des vêtements")
+        self.onStopped()
+
+    def cancelTimeout(self):
+        self.onTimeout = False
+        self.async.cancel()
+
+    def detectcolor(image):
+       # define the list of boundaries
+        boundaries = [
+          ([17, 15, 100], [50, 56, 200]),
+          ([86, 31, 4], [220, 88, 50]),
+          ([25, 146, 190], [62, 174, 250]),
+          ([103, 86, 65], [145, 133, 128])
+        ]
+       # loop over the boundaries
+        for (lower, upper) in boundaries:
+          # create NumPy arrays from the boundaries
+          lower = np.array(lower, dtype = "uint8")
+          upper = np.array(upper, dtype = "uint8")
+
+          # find the colors within the specified boundaries and apply
+          # the mask
+          mask = cv2.inRange(image, lower, upper)
+          outputImage = cv2.bitwise_and(image, image, mask = mask)
+        return outputImage;
+
+    def onHumanTracked(self,eventName,id,subscriber):
+        if(id >= 0): #some one tracked
+            self.cancelTimeout()
+            self.connectToCamera()
+            img = self.getImageFromCamera()
+            if(img == None):
+                self.tts.say("Désolée! j'ai un petit problème technique avec ma camera.Réessayez plus tard")
+            else:
+                img_output = self.detectcolor(img);
+                if(img_output == None):
+                   self.tts.say("Je suis désolée! je ne suis pas parvenu à déterminer la couleur de votre vêtement")
+                else:
+                   self.tts.say("La couleur de votre vêtement est: " + img_output)
+
+    def connectToCamera( self ):
+        try:
+            self.avd = ALProxy( "ALVideoDevice" )
+            nCameraNum = 1
+            nResolution = 1
+            nColorspace = 0
+            nFps = 5
+            self.strMyClientName = self.avd.subscribeCamera( self.getName(),
+                                 nCameraNum, nResolution, nColorspace, nFps )
+        except BaseException, err :
+            self.logger.info( "ERR: connectToCamera: catching error: %s!" % err )
+
+    def disconnectFromCamera( self ):
+        try:
+            self.avd.unsubscribe( self.strMyClientName )
+        except BaseException, err:
+            self.logger.info( "ERR: disconnectFromCamera: catching error: %s!" % err )
+
+    def getImageFromCamera( self ):
+        """
+        return the image from camera or None on error
+        """
+        try:
+            dataImage = self.avd.getImageRemote( self.strMyClientName )
+
+            if( dataImage != None ):
+                Image = (
+                    numpy.reshape(
+                    numpy.frombuffer(dataImage[6], dtype='%iuint8' % dataImage[2]),
+                       (dataImage[1], dataImage[0], dataImage[2])
+                            )
+              )
+            return image
+
+        except BaseException, err:
+              self.logger.info( "ERR: getImageFromCamera: catching error: %s!" % err )
+        return None;
+
+    def onInput_onStart(self):
+        self.async = qi.async(self.onTimeout, delay=20 * 1000 * 1000)
+
+    def onInput_onStop(self):
+        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
+        self.onColor_detected() #activate the output of the box]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+                            <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                            <Output name="onColor_detected" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+                            <Output name="outputnone" type="1" type_size="1" nature="2" inner="0" tooltip="" id="5" />
+                        </Box>
+                        <Link inputowner="2" indexofinput="3" outputowner="2" indexofoutput="4" />
+                        <Link inputowner="2" indexofinput="2" outputowner="0" indexofoutput="2" />
+                    </Diagram>
+                </BehaviorKeyframe>
+            </BehaviorLayer>
+        </Timeline>
+    </Box>
+</ChoregrapheProject>

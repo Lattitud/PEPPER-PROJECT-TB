@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package version="0.0.0" uuid="showimage-ca63d0">
+ <names>
+  <name lang="en_US">showImage</name>
+ </names>
+ <supportedLanguages>
+  <language>fr_FR</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>fr_FR</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="showImage">
+   <nature>solitary</nature>
+   <names>
+    <name lang="fr_FR">showImage</name>
+   </names>
+   <triggerSentences/>
+   <loadingResponses/>
+   <autonomous>
+    <condition purpose="launchTrigger"><![CDATA[Launchpad/NumPeopleZone1() > 0]]></condition>
+   </autonomous>
+   <permissions>
+    <canRunOnPod/>
+   </permissions>
+  </behaviorContent>
+ </contents>
+</package>

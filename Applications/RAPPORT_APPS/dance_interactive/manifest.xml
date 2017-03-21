@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package uuid="dance_interactive-b74b3c" version="0.0.0">
+ <names>
+  <name lang="en_US">dance_interactive</name>
+  <name lang="fr_FR">TaiChi_dance</name>
+ </names>
+ <descriptions>
+  <description lang="fr_FR">Cette application contient l'activité interactive suivante:
+quand quelqu'un demande: "peux-tu danser?"il lance cette animation</description>
+ </descriptions>
+ <supportedLanguages>
+  <language>fr_FR</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>fr_FR</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="dance">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <names>
+    <name lang="fr_FR">TaïChiDance</name>
+   </names>
+   <triggerSentences>
+    <sentence lang="fr_FR">peux-tu danser?</sentence>
+    <sentence lang="fr_FR">danse</sentence>
+   </triggerSentences>
+   <loadingResponses>
+    <sentence lang="fr_FR">oui!je vais vous présenter la danse du TaïChi chuan</sentence>
+   </loadingResponses>
+   <autonomous>
+    <condition purpose="launchTrigger"><![CDATA[('Launchpad/PeopleNotSeen()' == False)&& ('Launchpad/PreviousActivity' != "<dance_interactive-b74b3c/dance")]]></condition>
+   </autonomous>
+   <permissions>
+    <canRunOnPod/>
+   </permissions>
+  </behaviorContent>
+ </contents>
+ <requirements>
+  <robotRequirement model="JULIETTE"/>
+ </requirements>
+</package>

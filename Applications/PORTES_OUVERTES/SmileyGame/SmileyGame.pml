@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Package name="FaceRecognition_Game" format_version="4">
+<Package name="SmileyGame" format_version="4">
     <Manifest src="manifest.xml" />
     <BehaviorDescriptions>
-        <BehaviorDescription name="behavior" src="behavior_1" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="SmileyGame" xar="behavior.xar" />
     </BehaviorDescriptions>
-    <Dialogs />
+    <Dialogs>
+        <Dialog name="invitation" src="SmileyGame/invitation/invitation.dlg" />
+        <Dialog name="Replay" src="SmileyGame/porte_ouvertes/behavior_1/Replay/Replay.dlg" />
+    </Dialogs>
     <Resources>
-        <File name="misterx" src="misterx.png" />
-        <File name="misterx" src="images/misterx.png" />
         <File name="style" src="html/css/style.css" />
         <File name="HEIG_LOGO" src="html/images/HEIG_LOGO.png" />
         <File name="angry" src="html/images/angry.png" />
@@ -21,9 +22,11 @@
         <File name="index" src="html/index.html" />
         <File name="jquery-3.1.0.min" src="html/js/jquery-3.1.0.min.js" />
         <File name="script" src="html/js/script.js" />
-        <File name="save_initCode" src="save_initCode.txt" />
     </Resources>
-    <Topics />
+    <Topics>
+        <Topic name="invitation_frf" src="SmileyGame/invitation/invitation_frf.top" topicName="invitation" language="fr_FR" />
+        <Topic name="Replay_frf" src="SmileyGame/porte_ouvertes/behavior_1/Replay/Replay_frf.top" topicName="Replay" language="fr_FR" />
+    </Topics>
     <IgnoredPaths>
         <Path src=".metadata" />
     </IgnoredPaths>

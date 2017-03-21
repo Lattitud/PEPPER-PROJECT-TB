@@ -1,19 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package version="0.0.0" uuid="version3-def369">
+<package version="0.0.0" uuid="peoplegender-age-dee5c3">
  <names>
-  <name lang="en_US">version3</name>
+  <name lang="en_US">PeopleGender-Age</name>
  </names>
  <supportedLanguages>
-  <language>fr_FR</language>
+  <language>en_US</language>
  </supportedLanguages>
  <descriptionLanguages>
   <language>en_US</language>
-  <language>fr_FR</language>
  </descriptionLanguages>
  <contents>
-  <behaviorContent path="porte_ouvertes">
+  <behaviorContent path="PeopleCharacteristics">
    <userRequestable/>
-   <nature></nature>
+   <nature>interactive</nature>
+   <triggerSentences/>
+   <loadingResponses/>
+   <autonomous/>
    <permissions/>
   </behaviorContent>
  </contents>

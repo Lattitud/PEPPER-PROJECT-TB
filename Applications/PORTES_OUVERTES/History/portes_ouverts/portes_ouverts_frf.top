@@ -1,0 +1,14 @@
+topic: ~portes_ouverts()
+language: frf
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+u:(e:onStart) Nous sommes actuellement à La H E I G V D! C'est une très grande école qui offre une très bonne formation.
+u:(["où sommes nous?""quel est le nom de ton école""école"])La H E I G V D! C'est une très grande école qui offre une très bonne formation.
+u:(quel est le thème de cette journée?) $loadPresentation = 1

@@ -1,0 +1,18 @@
+   
+#File: NbOfPersonInFront.pml
+#Autor: Michelle Vanessa Meguep Sakam
+#Date:21.10.2016
+#Rule: dialog with people
+
+topic: ~dialogue()
+language: frf
+
+u:(Bonjour Pepper)Bonjour
+u:(Comment vas-tu ?)Je vais très bien et vous ?
+u:(Bien!Merci!)Je me rejouis de le savoir
+u:(Parle moi de tes origines)J’ai été conçu par la société française
+    Aldebaran en 2014. La connaissez-vous ?
+    u:(Non)C’est la même qui a conçu les robots Nao et Roméo
+    u:(Oui)Ok!
+
+

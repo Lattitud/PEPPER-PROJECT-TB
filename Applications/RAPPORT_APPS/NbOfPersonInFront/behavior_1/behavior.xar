@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ChoregrapheProject xmlns="http://www.aldebaran-robotics.com/schema/choregraphe/project.xsd" xar_version="3">
+    <Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0">
+        <bitmap>media/images/box/root.png</bitmap>
+        <script language="4">
+            <content>
+                <![CDATA[]]>
+</content>
+        </script>
+        <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+        <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+        <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+        <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+        <Timeline enable="0">
+            <BehaviorLayer name="behavior_layer1">
+                <BehaviorKeyframe name="keyframe1" index="1">
+                    <Diagram>
+                        <Box name="GiveNbOfPeopleInFront" id="1" localization="8" tooltip="This box rule is to give the number of person seen by the robot" x="189" y="79">
+                            <bitmap>media/images/box/box-python-script.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA["""
+    File: NbOfPersonInFront.pml
+    Autor: Michelle Vanessa Meguep Sakam
+    Date:18.10.2016
+    Rule: count people in front of the robot
+
+"""
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+        self.fdt = ALProxy("ALFaceDetection")
+        self.tts = ALProxy("ALTextToSpeech")
+
+    def onLoad(self):
+        #variable to lunch and stop timeout
+        self.async = None
+        self.timeout = False
+
+    def onUnload(self):
+        #put clean-up code here
+        self.async = None
+        self.timeout = False
+
+    #call when timeout reach
+    def onTimeout(self):
+        self.tts.say("timeout reach")
+        self.timeout = True
+
+    #call when no face detected
+    def onNoFace(self):
+        self.tts.say("No face detected")
+        self.onUnload()
+
+    #call in case of face(s) detected
+    def onPeopleDetected(self,eventName,value,subcriber ):
+        #stop timeout
+        if self.timeout:
+            self.async.cancel()
+        #store the result of faceDetection on variable FaceDetected
+        FaceDetected = value
+        if(len(FaceDetected) >0):
+            nbFaces = len(FaceDetected[1][0])
+            if(nbFaces ==0):
+                self.onNoFace()
+            elif:
+                #one person have been detected
+                self.tts.say("i can see " + str(nbFaces) + "person")
+            else:
+                #many people have been detected
+                self.tts.say("i can see " + str(nbFaces) + "people")
+        else:
+            self.onNoFace()
+
+    def onInput_onStart(self):
+        #subcribe to facedetection event
+        self.fdt.subcribeToEvent("FaceDetected",self.getName(),"onPeopleDetected")
+        #start timeout
+        self.async = qi.async(self.onTimeout, delay=20 * 1000 * 1000)
+
+    def onInput_onStop(self):
+        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
+        self.onStopped() #activate the output of the box]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+                            <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                            <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+                        </Box>
+                        <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="2" />
+                    </Diagram>
+                </BehaviorKeyframe>
+            </BehaviorLayer>
+        </Timeline>
+    </Box>
+</ChoregrapheProject>
