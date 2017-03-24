@@ -430,7 +430,7 @@
                                                                     <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                                                                     <Output name="onPlay" type="1" type_size="1" nature="2" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
                                                                 </Box>
-                                                                <Box name="continue" id="9" localization="8" tooltip="" x="920" y="351">
+                                                                <Box name="continue" id="9" localization="8" tooltip="" x="919" y="292">
                                                                     <dialogFile>continue/continue.dlg</dialogFile>
                                                                     <bitmap>media/images/box/box-dialog.png</bitmap>
                                                                     <script language="4">
@@ -445,7 +445,7 @@
                                                                     <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="" id="5" />
                                                                     <Output name="onCancel" type="1" type_size="1" nature="1" inner="0" tooltip="" id="6" />
                                                                 </Box>
-                                                                <Box name="switch" id="6" localization="8" tooltip="" x="591" y="299">
+                                                                <Box name="switch" id="6" localization="8" tooltip="" x="468" y="58">
                                                                     <bitmap>media/images/box/box-python-script.png</bitmap>
                                                                     <script language="4">
                                                                         <content>
@@ -620,7 +620,7 @@
                                                                     <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Stop the wait and stimulate the output." id="3" />
                                                                     <Input name="onVisioStart" type="1" type_size="1" nature="2" inner="0" tooltip="" id="4" />
                                                                     <Output name="timerOutput" type="1" type_size="1" nature="1" inner="0" tooltip="Send a bang once time set in parameters is elapsed, or if the box is stopped and the appropriate parameter is set." id="5" />
-                                                                    <Parameter name="Timeout (s)" inherits_from_parent="0" content_type="2" value="15" default_value="1" min="0" max="5000" tooltip="Duration the box waits before stimulating the output." id="6" />
+                                                                    <Parameter name="Timeout (s)" inherits_from_parent="0" content_type="2" value="20" default_value="1" min="0" max="5000" tooltip="Duration the box waits before stimulating the output." id="6" />
                                                                     <Parameter name="Trigger timerOutput if cancelled" inherits_from_parent="0" content_type="0" value="0" default_value="1" tooltip="If the box is currently waiting and cancelled, output will be stimulated." id="7" />
                                                                 </Box>
                                                                 <Box name="Say" id="4" localization="8" tooltip="Say some text. Note that you must open the box to enter the text." x="651" y="482">
